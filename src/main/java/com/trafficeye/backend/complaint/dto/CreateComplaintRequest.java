@@ -29,8 +29,19 @@ public class CreateComplaintRequest {
     @Size(max = 500, message = "Address must not exceed 500 characters")
     private String address;
 
+    @Size(
+    max = 30,
+    message = "Location source must not exceed 30 characters"
+    )
+    private String locationSource;
+
+    private Double locationAccuracy;
+
     @Size(max = 5000, message = "Description must not exceed 5000 characters")
     private String description;
+
+    @Size(max = 500, message = "Video key must not exceed 500 characters")
+    private String videoKey;
 
 
     public String getViolationType() {
@@ -81,11 +92,35 @@ public class CreateComplaintRequest {
         this.address = address;
     }
 
+    public String getLocationSource() {
+        return locationSource;
+    }
+
+    public void setLocationSource(String locationSource) {
+        this.locationSource = locationSource;
+    }
+
+    public Double getLocationAccuracy() {
+        return locationAccuracy;
+    }
+
+    public void setLocationAccuracy(Double locationAccuracy) {
+        this.locationAccuracy = locationAccuracy;
+    }
+
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getVideoKey() {
+    return videoKey;
+    }
+
+    public void setVideoKey(String videoKey) {
+        this.videoKey = videoKey;
     }
 }

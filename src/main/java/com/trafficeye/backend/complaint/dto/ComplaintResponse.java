@@ -22,9 +22,15 @@ public class ComplaintResponse {
 
     private String description;
 
+    private String videoKey;
+
     private ComplaintStatus status;
 
     private LocalDateTime createdAt;
+    
+    private String locationSource;
+
+    private Double locationAccuracy;
 
 
     public UUID getId() {
@@ -91,6 +97,14 @@ public class ComplaintResponse {
         this.description = description;
     }
 
+    public String getVideoKey() {
+    return videoKey;
+    }
+
+    public void setVideoKey(String videoKey) {
+        this.videoKey = videoKey;
+    }
+
     public ComplaintStatus getStatus() {
         return status;
     }
@@ -105,5 +119,21 @@ public class ComplaintResponse {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getLocationSource() {
+        return locationSource;
+    }
+
+    public void setLocationSource(String locationSource) {
+        this.locationSource = locationSource;
+    }
+
+    public Double getLocationAccuracy() {
+        return locationAccuracy;
+    }
+
+    public void setLocationAccuracy(Double locationAccuracy) {
+        this.locationAccuracy = locationAccuracy;
     }
 }

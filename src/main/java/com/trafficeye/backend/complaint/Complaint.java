@@ -33,8 +33,16 @@ public class Complaint {
     @Column(length = 500)
     private String address;
 
+    @Column(length = 30)
+    private String locationSource;
+
+    private Double locationAccuracy;
+
     @Column(columnDefinition = "TEXT")
     private String description;
+
+    @Column(length = 500)
+    private String videoKey;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 50)
@@ -111,6 +119,23 @@ public class Complaint {
         this.address = address;
     }
 
+    public String getLocationSource() {
+    return locationSource;
+}
+
+    public void setLocationSource(String locationSource) {
+        this.locationSource = locationSource;
+    }
+
+    public Double getLocationAccuracy() {
+        return locationAccuracy;
+    }
+
+    public void setLocationAccuracy(
+            Double locationAccuracy) {
+        this.locationAccuracy = locationAccuracy;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -119,6 +144,14 @@ public class Complaint {
         this.description = description;
     }
 
+    public String getVideoKey() {
+        return videoKey;
+    }
+
+    public void setVideoKey(String videoKey) {
+        this.videoKey = videoKey;
+    }
+    
     public ComplaintStatus getStatus() {
         return status;
     }

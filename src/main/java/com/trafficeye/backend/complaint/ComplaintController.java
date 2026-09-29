@@ -6,6 +6,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import com.trafficeye.backend.storage.S3Service;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -15,12 +17,32 @@ import java.util.UUID;
 public class ComplaintController {
 
     private final ComplaintService complaintService;
+    private final S3Service s3Service;
 
     public ComplaintController(
-            ComplaintService complaintService) {
-
+            ComplaintService complaintService,
+            S3Service s3Service
+    ) {
         this.complaintService = complaintService;
+        this.s3Service = s3Service;
     }
+
+    @PostMapping("/upload-url")
+    public UploadUrlResponse generateUploadUrl(
+            @Valid @RequestBody UploadUrlRequest request
+    ) {
+
+        S3Service.PresignedUpload upload =
+                s3Service.generateUploadUrl(
+                        request.getFileName(),
+                        request.getContentType()
+                );
+
+        return new UploadUrlResponse(
+                upload.uploadUrl(),
+                upload.objectKey()
+        );
+}
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

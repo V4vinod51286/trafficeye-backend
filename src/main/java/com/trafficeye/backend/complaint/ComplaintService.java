@@ -47,7 +47,10 @@ public class ComplaintService {
         complaint.setLatitude(request.getLatitude());
         complaint.setLongitude(request.getLongitude());
         complaint.setAddress(request.getAddress());
+        complaint.setLocationSource(request.getLocationSource());
+        complaint.setLocationAccuracy(request.getLocationAccuracy());
         complaint.setDescription(request.getDescription());
+        complaint.setVideoKey(request.getVideoKey());
 
         // Status is controlled by the backend.
         complaint.setStatus(ComplaintStatus.SUBMITTED);
@@ -114,8 +117,14 @@ public class ComplaintService {
                 complaint.getLongitude());
         response.setAddress(
                 complaint.getAddress());
+        response.setLocationSource(
+                complaint.getLocationSource());
+        response.setLocationAccuracy(
+                complaint.getLocationAccuracy());        
         response.setDescription(
                 complaint.getDescription());
+        response.setVideoKey(
+                complaint.getVideoKey());
         response.setStatus(
                 complaint.getStatus());
         response.setCreatedAt(
